@@ -1,0 +1,35 @@
+<?php
+require_once('View/template/header.phtml'); ?>
+
+    <!-- displays list of auctions  -->
+<h1 id="header">List of Live Auctions</h1>
+
+    <!--Card that shows each auction-->
+    <div id="auctionList" class="row row-cols-lg-2 row-cols-lg-2 g-5">
+        <?php
+        foreach ($view->auctionDataSet as $auctionItemData) {
+            echo
+                ' <div class="card mb-3 mt-3 mr-3 ml-5" style=" max-width: 650px; ">
+            <div class="row g-0">
+                <div class="col-md-4">
+                   <a href="auction.php?id='. $auctionItemData->getAuctionId().'"><img id ="" src="AuctionImages/' . 'flower' . $auctionItemData->getAuctionId() . '-1' . '.jpg' . ' " alt="no picture" />
+                 </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">'.
+                '<a href="auction.php?id='. $auctionItemData->getAuctionId().'">'."Auction ". $auctionItemData->getAuctionId().'</a>'.
+                '</h5><h4 class="card-title">'.$auctionItemData->getAuctionName().'</h4>
+                        <p class="card-text">'. $auctionItemData->getAuctionAddress() .'</p>  <h5 id="cardText" class="card-text"><small class="text-muted">'.
+                'Start Date: '.$auctionItemData->getAuctionStartDate() .'</small></h5>
+                        <h5 id="live" class="card-text"><strong>'. "Live".'</strong></h5>
+                 </div>
+                </div>
+            </div>
+        </div>
+         
+         ';
+        } ?>
+    </div>
+    <!--End of card-->
+<?php
+require_once('View/template/footer.phtml'); ?>

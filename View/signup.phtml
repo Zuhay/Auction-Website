@@ -1,0 +1,79 @@
+<?php
+require_once('View/template/header.phtml'); ?>
+
+    <!-- Sign up -->
+    <div class="container justify-content-center mt-5 mb-2 pt-5 pb-2">
+        <form id="login" role="form" class="custom-centered mt-5 mb-2" action="auctionList.php" method="post" >
+            <h2 class="justify-content-center" id="loginHead">Sign Up</h2>
+            <?php if(isset($_GET['error'])) { ?>
+                <p class="error"><?php echo $_GET['error'] ?></p>
+            <?php } ?>
+            <?php if(isset($_GET['success'])) { ?>
+                <p class="success"><?php echo $_GET['success'] ?></p>
+            <?php } ?>
+            <!-- Firstname -->
+            <div class="form-group">
+                <label for="firstname">First name</label>
+                <input type="text" name= "name" class="form-control" id="firstName"
+                       placeholder="John" required>
+            </div>
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text"  class="form-control" id="userName"
+                       placeholder="ryahuz123">
+            </div>
+            <!-- User Type -->
+            <div class="form-group">
+                <label for="sel1">User Type</label>
+                <select class="form-control" id="sel1">
+                    <option>Administrator</option>
+                    <option>Regular User</option>
+                </select>
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="firstname">Email</label>
+                <input type="text" name= "Email" class="form-control" id="email"
+                       placeholder="abc123@mail.com" required>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="Password" class="form-control" id="password"
+                       placeholder="Enter a Password.." minlength="6" required>
+            </div>
+            <!-- Repeat Password  -->
+            <div class="form-group">
+                <label for="password">Repeat Password</label>
+                <input type="password" name="Password" class="form-control" id="password"
+                       placeholder="Repeat Password.." minlength="6" oninput="check(this)" required  />
+            </div>
+
+            <!-- Checkboxes -->
+            <label><input type="checkbox" name="remember" style="margin-bottom:15px" checked />Remember me</label>
+
+            <p>By creating an account you agree to our <a href="https://policies.google.com/terms?hl=en" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+            <!-- Submit Button -->
+            <div class="clearfix">
+            <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+            <a id="link" href="login.php">Already have an account? Login</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Script for checking passwords -->
+    <script>
+        function check(input) {
+            if (input.value != document.getElementById('password').value) {
+                input.setCustomValidity('Passwords Must be Matching.');
+            } else {
+                // input is valid -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
+    </script>
+</div>
+<?php
+require_once('View/template/footer.phtml'); ?>

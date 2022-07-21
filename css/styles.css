@@ -1,0 +1,67 @@
+body{
+    background-color: #b6d4fe;
+    background-size: 100%;
+}
+
+.container{
+    min-height: 100%;
+}
+#icon{
+    width : 50px;
+    height : 50px;
+}
+
+#searchIcon{
+    width: 25px;
+    height: 25px;
+}
+
+img{
+    width: 100%;
+}
+
+#header{
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    padding: 150px 0px 100px 0px;
+    background-color: #343a40;
+}
+
+.custom-centered{
+    margin: 0 auto;
+    width: 500px;
+}
+
+#login{
+    background-color: #ffffff;
+    width: 75%;
+   /*margin-top: 150px;*/
+    margin-bottom: 150px;
+    padding: 15px;
+    border: 3px solid #4e555b;
+}
+
+
+#auctionButton, #loginButton, #signupButton{
+    margin-left: 20px;
+    color: #ffffff;
+    width: 100px;
+    height: 50px;
+}
+
+#pageHeader{
+    margin-top: 50px;
+}
+
+#cardText{
+    color: #ff0000;
+}
+
+#footer{
+    width: 100%;
+}
+
+#live{
+    color: #ff0000;
+}

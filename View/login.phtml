@@ -1,0 +1,28 @@
+<?php
+require_once('View/template/header.phtml'); ?>
+
+<!-- Login -->
+<div class="container justify-content-center mt-5 mb-2 pt-5">
+    <form action=login.php method="post" id="login" role="form" class="custom-centered mt-5 mb-2" >
+        <h2 class="justify-content-center" id="loginHead">Login</h2>
+        <?php if(isset($_GET['error'])) { ?>
+        <p class="error"><?php echo $_GET['error'] ?></p>
+        <?php } ?>
+        <!-- Email label and box -->
+        <div class="form-group">
+            <label for="firstname">Email</label>
+            <input type="text" name= "Email" class="form-control" id="email"
+                   placeholder="abc123@mail.com">
+        </div>
+        <!-- Password label and box -->
+        <div class="form-group">
+            <label for="firstname">Password</label>
+            <input type="password" name="Password" class="form-control" id="password"
+                   placeholder="Enter Password..">
+        </div>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <a id="link" href="signup.php">Not a member? Sign Up!</a>
+    </form>
+</div>
+

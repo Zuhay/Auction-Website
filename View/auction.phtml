@@ -1,0 +1,32 @@
+<?php
+require_once('View/template/header.phtml'); ?>
+
+    <h1 id="header">List of Items in Auction <?php echo $view->id ?></h1>
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+
+<?php
+foreach ($view->auctionDataSet as $auctionItemData) {
+    echo
+        ' <div class="card mb-3 mt-3 ml-5 mr-3" style="max-width: 400px; ">
+            <div class="row g-0">
+                <div class="col-md-4">
+                   <a href="item.php?id='. $auctionItemData->getItemId().'"><img id ="" src="AuctionImages/' . 'flower' . $auctionItemData->getImageId() . '-1' . '.jpg' . ' " alt="no picture" />
+                 </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">'.
+        '<a href="item.php?id='. $auctionItemData->getItemId().'">' . "Lot " .$auctionItemData->getItemId().'</a>'.
+        '</h5><h4 class="card-title">'. $auctionItemData->getItemTitle() . '</h4> <p class="card-text">' .$auctionItemData->getItemDesc() .'</p>
+                        <h5 class="card-text"><small class="text-muted">'.
+        'Posting User '. $auctionItemData->getPostingUser() .'</small></h5>
+                 </div>
+                </div>
+            </div>
+            </div>
+            ';
+    }
+    ?>
+    </div>
+
+<?php
+require_once('View/template/footer.phtml'); ?>

@@ -1,0 +1,43 @@
+<?php
+require_once('View/template/header.phtml');?>
+
+<h1 id="header">Lot <?php echo $view->id ?></h1>
+
+<!-- displays item/lot in the auction-->
+<?php
+
+$i=0;
+
+foreach ($view->auctionDataSet as $auctionItemData) {
+
+   if($i!=0)
+       break;
+   $view->src . '<br>';
+    $i++;
+
+    echo
+        ' <div class="jumbotron-fluid justify-content-center" style="max-width: 1000px; ">
+            <div class="row g-0">
+                <div class="col-md-4">
+                   <a href="auction.php?id=' . $auctionItemData->getItemId() . '"><img id ="" src="AuctionImages/' . 'flower' . $auctionItemData->getImageId() . '-1' . '.jpg' . ' " alt="no picture" />
+                 </div>
+    <div class="card mb-3" style="max-width: 1000px; ">
+    
+    <!-- Card Body -->
+<div class="card-body mb-5">
+    <h5 class="card-title">' .
+        '<a href="item.php?id=' . $auctionItemData->getItemId() . '">' . "Item " . $auctionItemData->getItemId() . '</a>' .
+        '</h5><h4 class="card-title">' . $auctionItemData->getItemTitle() . '</h4> <p class="card-text">' . $auctionItemData->getItemDesc() . '</p>
+    <h5 class="card-text"><small class="text-muted">' . 'Posting User ' . $auctionItemData->getPostingUser() . '</small></h5>
+    <h5 class="card-text">Bid Amount: $'. $auctionItemData->getStartBidAmount(). '</h5>
+    <h6 class="card-text">Date Created:  '. $auctionItemData->getDateCreated(). '</h6>
+    <h6 class="card-text">Bid End Date:  '. $auctionItemData->getBidEndDate(). '</h6>
+    <button class="btn-outline-primary pr-5 pl-5 pt-2 pb-2" name="bidButton">Bid</button>
+</div>';
+}
+    ?>
+
+<?php
+require_once('View/template/footer.phtml');?>
+
+

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Auction" content="Auction website">
+    <meta name="Zuhayr Ahmad Khan" content="">
+    <!--page icon-->
+    <link rel="shortcut icon" type="image/png" href="images/auction icon.png">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <link href="/css/styles.css" rel="stylesheet">
+
+    <title>Auction<?php
+        //echo $view->pageTitle;
+        echo "Auction System" ?></title>
+
+
+</head>
+
+<body>
+<div class="container">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top " style="background-color:#e0e0e0;" >
+        <div class="container-fluid">
+            <!--             Button for collapsable menu-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <!-- Brand-->
+                    <a class="navbar-brand" href="index.php">
+                        <img id="icon" src="images/auction icon.png" alt="Auction website brand" />
+                    </a>
+
+                    <!-- Login button-->
+                    <li class="btn-group " nav-item active" >
+                        <button id="loginButton"  type="button" class="btn btn-primary"><a class="nav-link" href="login.php"><strong>Login</strong></a></button>
+                    </li>
+
+                    <!--Sign Up Button-->
+                    <li class="btn-group nav-item active">
+                        <button id="signupButton" type="button" class="btn btn-success "><a class="nav-link" href="signup.php"><strong>Sign Up</strong></a></button>
+                    </li>
+
+                    <!-- Dropdown menu-->
+                    <li class="nav-item dropdown active">
+
+                        <button id="auctionButton"  class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Auctions
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="auctionList.php">Live Auctions</a></li>
+                            <li><a class="dropdown-item" href="auctionList.php">Newly Added Auctions </a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--                 Search box-->
+                <form class="form-inline my-3 my-lg-0" >
+                    <div class="input-group">
+                        <input class="form-control mr-sm-4" type="text" id="search" placeholder="Search" onkeyup="showHint(this.value)">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div  class="justify-content-center bg" id="txtHint"></div>
+    </nav>
+    <!--end of navbar-->
+
+</div>
+
+
+<!-- Script for LiveSearch -->
+<script>
+    function showHint(str) {
+        let xmlhttp;
+        if (str.length === 0) {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+         else
+        {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function()
+            {
+                // students is auction
+                if (this.response !== "no suggestion")
+                {
+                    var uic = document.getElementById("txtHint");
+                    var items = JSON.parse(this.responseText);
+                    uic.innerHTML = "";
+                    let limit = 3; // limit the number of search results
+
+                    items.forEach(function (obj)
+                    {
+                        if(limit>0) {
+                            uic.innerHTML += "<p class=\"text-dark\">" + obj.name + "</p>";
+                            limit--;
+                        }
+
+                    });
+
+                    // uic.innerHTML += "</ul>";
+                    }
+                    else
+                    {
+                        var uic = document.getElementById("txtHint");
+                        uic.innerHTML = "<p>no suggestion XD<p>";
+                    }
+            };
+            xmlhttp.open("GET", "ajaxSearch.php?q=" + str , true);
+            xmlhttp.send();
+         }
+    }
+</script>
+
